@@ -161,6 +161,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         // looping through all rows and adding to list
+        // test git
         if (cursor.moveToFirst()) {
             do {
                 HiScore hiScore = new HiScore();
