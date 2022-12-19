@@ -1,25 +1,25 @@
-// https://stackoverflow.com/questions/9276858/how-to-add-a-countup-timer-on-android
+package com.education.simongame;
+
 import android.os.CountDownTimer;
-
 public abstract class CountUpTimer extends CountDownTimer {
-    private static final long INTERVAL_MS = 1000;
+    private static final long INTERVAL_MS = 100;
     private final long duration;
-
+    public double CurrentSeconds;
     protected CountUpTimer(long durationMs) {
         super(durationMs, INTERVAL_MS);
         this.duration = durationMs;
+        CurrentSeconds =0;
     }
-
-    public abstract void onTick(int second);
+    public abstract void onTick(double second);
 
     @Override
     public void onTick(long msUntilFinished) {
-        int second = (int) ((duration - msUntilFinished) / 1000);
-        onTick(second);
+        double second = ((duration - msUntilFinished )/ 100 );
+        CurrentSeconds += (second - CurrentSeconds);
+        this.onTick(CurrentSeconds);
     }
-
     @Override
     public void onFinish() {
-        onTick(duration / 1000);
+        onTick(duration/100);
     }
 }
