@@ -85,7 +85,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
-                //Log.i("Database index 0",cursor.getString(0)+""); // for debugging
+               //Log.i("Database index 0",cursor.getString(0)+""); // for debugging
                 HiScore score = new HiScore(
                         cursor.getInt(0)+"",// id
                         cursor.getString(1),// name

@@ -33,7 +33,7 @@ public class GameOverScreen extends AppCompatActivity {
         etName = findViewById(R.id.ET_Name);
 
         // create score object from the current score and level
-        score = new HiScore("Moh",(MainActivity.CurrentScore)+"",""+(MainActivity.CurrentLevel-1));
+        score = new HiScore("Jeh",(MainActivity.CurrentScore)+"",""+(MainActivity.CurrentLevel-1));
         // show score on screen
         tvScore.setText("Your Score is: "+score.getScore());
         tvLevel.setText("Your got to level: "+score.getLevel());

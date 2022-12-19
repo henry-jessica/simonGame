@@ -14,26 +14,22 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     final int LEVEL_START_DIFFICULTY = 4;
     final int LEVEL_START_DIFFICULTY_INCREASE = 2;
-    enum GameState{
-        Setup,
-        Start,
-        ShowingGuess,
-        ShowingMessage,
-        NextActivity,
-        End,
-        Restart,
-        Wait,
+     enum GameState{
+         Setup,
+         Start,
+         ShowingGuess,
+         ShowingMessage,
+         NextActivity,
+         End,
+         Restart,
+         Wait,
     }
-    // using buttons as visual feedback to the player
     Button btnCandle,btnPoison,btnBook,btnWitch,btn_play;
     TextView tv_UserDisplay, tv_score, tv_level;
     int[] currentSequence;
-    // using counters to animate the buttons and create game loop
     CountUpTimer highlightTimer;
-    // this will allow me to track the game state using the enum "GameState"
     CountUpTimer GameLoop;
     int LevelDifficulty = LEVEL_START_DIFFICULTY;
-    // used in animating the button along with the timer
     boolean timeUp = false;
     boolean highlightStarted = false;
     float animationTime = 11f;
@@ -114,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
                         gameState = GameState.Wait;
                         break;
                     case End:
-                        EndThisGame();
-                        break;
+                            EndThisGame();
+                            break;
                     case Restart:
                         //Log.i("Main activity:","Restarted -----------------------------------------------------");
                         RestartGame();
@@ -165,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
         if(DataLoaded) return;
         tv_score.setText("Score: "+(CurrentScore));
         tv_level.setText("Level: "+(CurrentLevel+1));
-        tv_UserDisplay.setText( ("Get Ready!! Press Play") );
+        tv_UserDisplay.setText( ("Press Play") );
         timeUp = false;
         currentButtonToLightIndex = 0;
         // reset guess array to get a new one
@@ -218,16 +214,16 @@ public class MainActivity extends AppCompatActivity {
         if(currentSequence != null){
             //Toast.makeText(this,"Index: "+currentButtonToLightIndex,Toast.LENGTH_SHORT).show();
             switch (currentSequence[currentButtonToLightIndex]){
-                case 0: // cat
+                case 0:
                     StartHighlight(btnBook);
                     break;
-                case  1: // dog
+                case  1:
                     StartHighlight(btnWitch);
                     break;
-                case 2: // mouse
+                case 2:
                     StartHighlight(btnPoison);
                     break;
-                case  3: // monkey
+                case  3:
                     StartHighlight(btnCandle);
                     break;
             }

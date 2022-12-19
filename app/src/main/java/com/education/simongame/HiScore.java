@@ -56,4 +56,3 @@ public class HiScore implements Comparable  {
         return otherScore -score;
     }
 }
-
