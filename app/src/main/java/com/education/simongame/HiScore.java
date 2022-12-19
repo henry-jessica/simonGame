@@ -1,6 +1,7 @@
-package edu.icraig.dbfrommoodledoc;
+package com.education.simongame;
 
-public class HiScore {
+//DONE
+public class HiScore implements Comparable  {
     /*
      * CREATE TABLE hiscores (
      *      score_id INTEGER PRIMARY KEY,
@@ -9,62 +10,50 @@ public class HiScore {
      *      score INTEGER NOT NULL);
      */
 
-    int  score_id;          // primary score
-    String game_date;       // date in 02 DEC 2020
-    String player_name;     // JOE
-    int score;              // score - should be even
+    String ID;    // primary score
+    String Name;  // JOE
+    String Score;  // score - should be even
+    String Level; //level
 
     /*
      * Constructors
      */
-    public HiScore(int score_id, String game_date, String player_name, int score) {
-        this.score_id = score_id;
-        this.game_date = game_date;
-        this.player_name = player_name;
-        this.score = score;
-    }
 
-    public HiScore() {
+    public int getScoreInt(){
+        return Integer.parseInt(getScore());
+    }
+    public String getLevel() {
+        return Level;
+    }
+    public String getScore() {
+        return Score;
+    }
+    public String getName() {
+        return Name;
+    }
+    public void setName(String name) {
+        Name = name;
     }
 
     /*
      * Getter and setter methods
      */
-    public HiScore(String game_date, String player_name, int score) {
-        this.game_date = game_date;
-        this.player_name = player_name;
-        this.score = score;
+    public HiScore(String id,String name, String level, String score){
+        ID = id;
+        Name = name;
+        Score = score;
+        Level = level;
     }
 
-    public int getScore_id() {
-        return score_id;
+    public HiScore(String name,String score,String level)
+    {
+        this(null,name,level,score);
     }
-
-    public void setScore_id(int score_id) {
-        this.score_id = score_id;
-    }
-
-    public String getGame_date() {
-        return game_date;
-    }
-
-    public void setGame_date(String game_date) {
-        this.game_date = game_date;
-    }
-
-    public String getPlayer_name() {
-        return player_name;
-    }
-
-    public void setPlayer_name(String player_name) {
-        this.player_name = player_name;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
+    @Override
+    public int compareTo(Object o) {
+        int otherScore = Integer.parseInt(((HiScore)o).getScore());
+        int score =Integer.parseInt(getScore());
+        return otherScore -score;
     }
 }
+
